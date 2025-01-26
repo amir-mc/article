@@ -3,17 +3,21 @@ import SearchFrom from "../../components/search";
 import Sturtup, { Startupcard } from "@/components/startupfile";
 import { START_QUERY } from "@/sanity/lib/query";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 
-
+ 
 
 export default async function Home({searchParams}:{
-  searchParams:Promise<{query?:string}>
-}) 
+  searchParams:Promise<{query?:string}>   
+})  
+ 
+{  
+  const query=(await searchParams).query
+  const params={search: query || null}
+  //const posts= await client.fetch(START_QUERY)
+  const {data:posts}=await sanityFetch({query:START_QUERY,params})
+ 
 
-{ 
-  const posts= await client.fetch(START_QUERY)
-
-const query=(await searchParams).query
   return (
     <>
     <section className="pink_container">
