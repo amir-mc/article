@@ -55,7 +55,7 @@ const {_createdAt,view,image,author,description,_id,category,title}=post
                           </Link>
 
                         <Button className="startup-card_btn" asChild >
-                                <Link href={`/startup/${_id}}`}>
+                                    <Link href={`/startup/${_id}`}>
                                 details
                                 </Link>
                         </Button>
