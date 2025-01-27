@@ -23,3 +23,20 @@ export const START_QUERY = defineQuery(`
     pitch
   }
 `);
+
+export const START_QUERY_BY_ID = defineQuery(`
+  *[
+    _type == "startup" && _id == $id][0] {
+    _id,
+    slug,
+    title,
+    view,
+    image,
+    author->{_id, name,username, bio, image},
+    category,
+    description,
+    _createdAt,
+    pitch
+  }
+`);
+
